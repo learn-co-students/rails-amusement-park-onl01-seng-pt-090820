@@ -8,7 +8,7 @@ class Ride < ActiveRecord::Base
         elsif self.attraction.tickets > self.user.tickets
             "Sorry. You do not have enough tickets to ride the #{attraction.name}."    
         elsif self.user.height < self.attraction.min_height 
-            "Sorry. You are not tall enough to ride the Roller Coaster."
+            "Sorry. You are not tall enough to ride the #{attraction.name}."
         elsif
             self.user.tickets = self.user.tickets - self.attraction.tickets
             
@@ -16,6 +16,7 @@ class Ride < ActiveRecord::Base
 
             self.user.happiness = self.user.happiness + self.attraction.happiness_rating
             self.user.save
+            "Thanks for riding the #{self.attraction.name}!"
         end
     end
 end
