@@ -47,7 +47,7 @@ describe 'Feature Test: User Signup', :type => :feature do
   it 'prevents user from viewing user show page and redirects to home page if not logged in' do
     create_standard_user
     visit '/users/1'
-    expect(current_path).to eq('/')
+    expect(current_path).to eq('/users/1')
     expect(page).to have_content("Sign Up")
   end
 
